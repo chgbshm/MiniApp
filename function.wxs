@@ -1,18 +1,21 @@
+// 页面调用方法
+var Config = require('./config.wxs')
 module.exports = {
-	img_url: img_url,
+    img_url: img_url,
 }
-var image_url  = "http://image.xilukeji.com"
 
 function img_url(url) {
-	// console.log(url)
-	// var reg = /^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-.,@?^=%&:\/~+#]*[\w\-@?^=%&\/~+#])?$/;
-	// 判断是否是完整http|https|ftp地址
-	// if (reg.test(url)) {
-	if (url.substring(0, 7).toLowerCase() == "http://" || url.substring(0, 8).toLowerCase() == "https://") {
-		// 直接请求当前地址
-		return url
+    url = url || ''
+	if(url){
+		// 判断是否是完整http|https|ftp地址
+		if (url.substring(0, 7).toLowerCase() == "http://" || url.substring(0, 8).toLowerCase() == "https://") {
+			// 直接请求当前地址
+			return url
+		} else {
+			// 自定义方法短链接,拼接app.js中设置的请求链接
+			return Config.Img_Url + url
+		}
 	} else {
-		// 自定义方法短链接,拼接app.js中设置的请求链接
-		return image_url + url
+		return '/images/loading-2.gif'
 	}
 }
