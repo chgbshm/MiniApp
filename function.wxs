@@ -23,22 +23,24 @@ function img_url(url) {
 }
 
 // 七牛图片处理
-function qiniu_url(url, type) {
+function qiniu_url(url, type, size) {
 	url  = url || ''
 	type = type || ''
+	size = size || ''
 	if (url) {
 		// 判断是否是完整http|https|ftp地址
+		switch (type) {
+			case 'slim':
+				url += '?imageslim/imageMogr2/interlace/1'
+				break;
+			case 'size':
+				url += '?imageMogr2' + size
+				break;
+			default:
+				break;
+		}
 		if (url.substring(0, 7).toLowerCase() == "http://" || url.substring(0, 8).toLowerCase() == "https://") {
 			// 直接请求当前地址
-			switch (type) {
-				case 'mini':
-					url += '/mini'
-					break;
-				case '123':
-					break;
-				default:
-					break;
-			}
 			return url
 		} else {
 			// 自定义方法短链接,拼接app.js中设置的请求链接
