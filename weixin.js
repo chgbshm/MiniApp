@@ -7,7 +7,7 @@ const Config = require('./config.js')
 function initQiniu() {
     var options = {
         region: 'ECN', // 华东区
-        uptokenURL: Config.Web_Url + 'index/index/getToken',
+        uptokenURL: Config.Web_Url + 'api/Mini/getToken',
         domain: 'images2',
         // uploadURL: 'http://images2.img.xilukeji.com',
         uploadURL: Config.Img_Url,
@@ -84,7 +84,7 @@ function chooseImg(num, that, uploadtoken, cb) {
 //获取七牛token
 function getToken(num, that, cb) {
     wx.request({
-        url: Config.Web_Url + 'index/index/getToken',
+        url: Config.Web_Url + 'api/Mini/getToken',
         data: {},
         header: {
             "Content-Type": "application/x-www-form-urlencoded"
