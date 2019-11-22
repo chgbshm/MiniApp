@@ -1,15 +1,44 @@
 // 页面调用方法
-var Config = require('./config.wxs')
+var Config     = require('./config.wxs')
 module.exports = {
-    img_url: img_url,
+	img_url  : img_url,
+	qiniu_url: qiniu_url,
 }
 
+// 判断并补充图像路径
 function img_url(url) {
-    url = url || ''
-	if(url){
+	url = url || ''
+	if (url) {
 		// 判断是否是完整http|https|ftp地址
 		if (url.substring(0, 7).toLowerCase() == "http://" || url.substring(0, 8).toLowerCase() == "https://") {
 			// 直接请求当前地址
+			return url
+		} else {
+			// 自定义方法短链接,拼接app.js中设置的请求链接
+			return Config.Img_Url + url
+		}
+	} else {
+		return '/images/loading-2.gif'
+	}
+}
+
+// 七牛图片处理
+function qiniu_url(url, type) {
+	url  = url || ''
+	type = type || ''
+	if (url) {
+		// 判断是否是完整http|https|ftp地址
+		if (url.substring(0, 7).toLowerCase() == "http://" || url.substring(0, 8).toLowerCase() == "https://") {
+			// 直接请求当前地址
+			switch (type) {
+				case 'mini':
+					url += '/mini'
+					break;
+				case '123':
+					break;
+				default:
+					break;
+			}
 			return url
 		} else {
 			// 自定义方法短链接,拼接app.js中设置的请求链接
