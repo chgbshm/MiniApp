@@ -98,15 +98,15 @@ function _get(url, data, success, fail, complete) {
         },
         data: data,
         success(res) {
-			// console.log(res.data.code)
+            // console.log(res.data.code)
             if (res.data.code === 0) {
                 Model(res.data.msg)
                 return false
             } else if (res.data.code === 88) {
-				// console.log(res.data.code)
-                Toast(res.data.msg,'','',function(){
-					wx.navigateBack()
-				})
+                // console.log(res.data.code)
+                Toast(res.data.msg, '', '', function() {
+                    wx.navigateBack()
+                })
                 return false
             } else {
                 success && success(res.data)
@@ -156,13 +156,13 @@ function _post(url, data, success, fail, complete) {
                     fail && fail(res)
                 })
                 return false
-			} else if (res.data.code === 88) {
-				// console.log(res.data.code)
-				Toast(res.data.msg, '', '', function () {
-					wx.navigateBack()
-				})
-				return false
-			} else {
+            } else if (res.data.code === 88) {
+                // console.log(res.data.code)
+                Toast(res.data.msg, '', '', function() {
+                    wx.navigateBack()
+                })
+                return false
+            } else {
                 success && success(res.data)
             }
         },
@@ -268,6 +268,32 @@ function in_array(stringToSearch, arrayToSearch) {
     }
     return false
 }
+// 获取fromID
+function saveFormId(formid) {
+    console.log(formid)
+    if (typeof formid == 'undefined' || !formid || formid == 'the formId is a mock one') {
+        return false;
+    }
+    var openid = wx.getStorageSync('openid') || ''
+    wx.request({
+        url: web_url + 'api/Mini/saveFormId',
+        data: {
+            formid: formid
+        },
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'openid': openid
+        },
+        method: 'post',
+        success: function(res) {
+            console.log('formId', res)
+        },
+        fail: function(res) {
+            console.log('接口调用失败', res)
+        },
+        complete: function(res) {}
+    })
+}
 
 // 模块化方法
 module.exports = {
@@ -280,4 +306,5 @@ module.exports = {
     VerifyURL: VerifyURL, // 判断请求地址，并为方法地址添加http
     checkmobile: checkmobile,
     in_array: in_array,
+    saveFormId: saveFormId,
 }
