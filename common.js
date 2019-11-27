@@ -278,7 +278,8 @@ function saveFormId(formid) {
     wx.request({
         url: web_url + 'api/Mini/saveFormId',
         data: {
-            formid: formid
+            formid: formid,
+            openid: openid
         },
         header: {
             'content-type': 'application/x-www-form-urlencoded',
