@@ -276,7 +276,7 @@ function saveFormId(formid) {
     }
     var openid = wx.getStorageSync('openid') || ''
     wx.request({
-        url: web_url + 'api/Mini/saveFormId',
+		url: VerifyURL('api/Mini/saveFormId'),
         data: {
             formid: formid,
             openid: openid
