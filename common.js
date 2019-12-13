@@ -90,6 +90,7 @@ function _get(url, data, success, fail, complete) {
     if (wx.getStorageSync('user_id')) {
         data.user_id = wx.getStorageSync('user_id')
     }
+	data.ismini = 'E7mP6grP'
     // 构造get请求
     wx.request({
         url: VerifyURL(url),
@@ -143,6 +144,7 @@ function _post(url, data, success, fail, complete) {
     if (wx.getStorageSync('user_id')) {
         data.user_id = wx.getStorageSync('user_id')
     }
+	data.ismini = 'E7mP6grP'
     wx.request({
         url: VerifyURL(url),
         header: {

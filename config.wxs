@@ -1,7 +1,7 @@
 // 固定数据配置
 module.exports = {
-	// Web_Url: "http://lam.guosheng.com/",
-	Web_Url: "https://i.xilukeji.com/guosheng/public/index.php/",
-	Img_Url: "http://images2.img.xilukeji.com",
-	Map_Key: "HQZBZ-RRAK4-UTGUR-DKHW3-GP3DV-ARBE4",
+    Web_Url: "http://lam.rongba.com/",
+    // Web_Url: "https://i.xilukeji.com/guosheng/public/index.php/",
+    Img_Url: "http://rb.rongbachina.com",
+    Map_Key: "",
 }

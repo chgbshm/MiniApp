@@ -18,7 +18,7 @@ function img_url(url) {
 			return Config.Img_Url + url
 		}
 	} else {
-		return '/images/loading-2.gif'
+		return '/utils/MiniApp/images/loading-2.gif'
 	}
 }
 
@@ -47,6 +47,6 @@ function qiniu_url(url, type, size) {
 			return Config.Img_Url + url
 		}
 	} else {
-		return '/images/loading-2.gif'
+		return '/utils/MiniApp/images/loading-2.gif'
 	}
 }
