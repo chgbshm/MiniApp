@@ -46,7 +46,7 @@ function chooseImg(num, that, uploadtoken, cb) {
             // console.log(tempFilePaths)
             for (var i = 0; i < tempFilePaths.length; i++) {
                 var filePath = tempFilePaths[i]
-                var upload_name = 'xqcrm/' + mydate + '/' + filePath.substr(-40, 40)
+				var upload_name = Config.Qiniu_Name +'/' + mydate + '/' + filePath.substr(-40, 40)
                 // uploadImg(tempFilePaths);
                 // 交给七牛上传
                 qiniuUploader.upload(filePath, (res) => {
